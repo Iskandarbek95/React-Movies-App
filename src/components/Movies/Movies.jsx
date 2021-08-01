@@ -8,21 +8,19 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 function Movies() {
 
     const { apiState, search } = useContext(ApiContext);
-    const [searchParam] = useState(['title']);
 
     const filterMovies = apiState.filter(item =>
         String(item.title).toLowerCase().includes(search.toLowerCase()) ||
         String(item.release_date).toLowerCase().includes(search.toLowerCase()) ||
         String(item.vote_average).toLowerCase().includes(search.toLowerCase())
     );
-    console.log(filterMovies);
 
     // pagination \/
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage, setItemsPerPage] = useState(8);
+    const [itemsPerPage] = useState(8);
 
-    const [pageNumberLimit, setPageNumberLimit] = useState(8);
+    const [pageNumberLimit] = useState(8);
     const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(8);
     const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
 
@@ -37,7 +35,7 @@ function Movies() {
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = apiState.slice(indexOfFirstItem, indexOfLastItem);
+    // const currentItems = apiState.slice(indexOfFirstItem, indexOfLastItem);
 
     const renderPageNumbers = pages.map(number => {
         if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
@@ -46,7 +44,7 @@ function Movies() {
                     key={number}
                     id={number}
                     onClick={handleClick}
-                    className={currentPage == number ? "active" : null}
+                    className={currentPage === number ? "active" : null}
                 >
                     {number}
                 </li>
@@ -66,7 +64,7 @@ function Movies() {
 
     const handlePrevbtn = () => {
         setCurrentPage(currentPage - 1);
-        if ((currentPage - 1) % pageNumberLimit == 0) {
+        if ((currentPage - 1) % pageNumberLimit === 0) {
             setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
             setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit);
         }
@@ -99,7 +97,7 @@ function Movies() {
         </div>
         <ul className="page-numbers">
             <li>
-                <button disabled={currentPage == pages[0] ? true : false} onClick={handlePrevbtn}>
+                <button disabled={currentPage === pages[0] ? true : false} onClick={handlePrevbtn}>
                     <ChevronLeftIcon />
                 </button>
             </li>
