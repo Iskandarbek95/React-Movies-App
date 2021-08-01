@@ -1,0 +1,40 @@
+.movies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.page-numbers {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 10px auto;
+}
+
+.page-numbers li {
+    height: 25px;
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: rgba(128, 128, 128, 0.5);
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.page-numbers li.active {
+    background: rgba(128, 128, 128, 0.8);
+}
+
+.page-numbers li button {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+}
+
+.page-numbers li button:hover {
+    background-color: rgba(71, 127, 153, 0.609);
+}

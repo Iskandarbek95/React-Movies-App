@@ -1,0 +1,12 @@
+.swiper-img {
+    height: 80vh;
+}
+
+.swiper-img .swiper-slide {
+    height: 100%;
+}
+
+.swiper-img .swiper-slide img {
+    border-radius: 15px;
+    border: 5px solid #4d4d4d;
+}
